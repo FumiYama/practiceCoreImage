@@ -14,6 +14,7 @@
 		3288A1F71C37BE34006E9016 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3288A1F51C37BE34006E9016 /* LaunchScreen.storyboard */; };
 		3288A2021C37BE35006E9016 /* practiceCoreImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3288A2011C37BE35006E9016 /* practiceCoreImageTests.swift */; };
 		3288A20D1C37BE35006E9016 /* practiceCoreImageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3288A20C1C37BE35006E9016 /* practiceCoreImageUITests.swift */; };
+		3288A21F1C37D2F4006E9016 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3288A21E1C37D2F4006E9016 /* 2.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -47,6 +48,7 @@
 		3288A2081C37BE35006E9016 /* practiceCoreImageUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = practiceCoreImageUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		3288A20C1C37BE35006E9016 /* practiceCoreImageUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = practiceCoreImageUITests.swift; sourceTree = "<group>"; };
 		3288A20E1C37BE35006E9016 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3288A21E1C37D2F4006E9016 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,6 +99,7 @@
 		3288A1EB1C37BE34006E9016 /* practiceCoreImage */ = {
 			isa = PBXGroup;
 			children = (
+				3288A21E1C37D2F4006E9016 /* 2.jpg */,
 				3288A1EC1C37BE34006E9016 /* AppDelegate.swift */,
 				3288A1EE1C37BE34006E9016 /* ViewController.swift */,
 				3288A1F01C37BE34006E9016 /* Main.storyboard */,
@@ -231,6 +234,7 @@
 			files = (
 				3288A1F71C37BE34006E9016 /* LaunchScreen.storyboard in Resources */,
 				3288A1F41C37BE34006E9016 /* Assets.xcassets in Resources */,
+				3288A21F1C37D2F4006E9016 /* 2.jpg in Resources */,
 				3288A1F21C37BE34006E9016 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -482,6 +486,7 @@
 				3288A2131C37BE35006E9016 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3288A2141C37BE35006E9016 /* Build configuration list for PBXNativeTarget "practiceCoreImageTests" */ = {
 			isa = XCConfigurationList;
@@ -490,6 +495,7 @@
 				3288A2161C37BE35006E9016 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		3288A2171C37BE35006E9016 /* Build configuration list for PBXNativeTarget "practiceCoreImageUITests" */ = {
 			isa = XCConfigurationList;
@@ -498,6 +504,7 @@
 				3288A2191C37BE35006E9016 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
