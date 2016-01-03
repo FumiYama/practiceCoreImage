@@ -38,9 +38,7 @@ class ViewController: UIViewController {
     let mb_mosaicButton: UIButton = UIButton() // モザイクボタン
     let mb_monochromeButton: UIButton = UIButton() //モノクロ化のボタン
     let rb_reversalButton: UIButton = UIButton() // 反転ボタン
-    
-    // 画面サイズ取得
-
+    let ccb_colorConversionButton: UIButton = UIButton() // 色変換ボタン
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -55,7 +53,7 @@ class ViewController: UIViewController {
         sb_sepiaButton.backgroundColor = UIColor.hexStr("#F52F57", alpha: 1)
         sb_sepiaButton.setTitle("sepia", forState: .Normal)
         sb_sepiaButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        sb_sepiaButton.layer.position = CGPoint(x: ss.width/5, y: ss.height-50)
+        sb_sepiaButton.layer.position = CGPoint(x: ss.width/6, y: ss.height-50)
         sb_sepiaButton.tag = 1
         sb_sepiaButton.addTarget(self, action: "onClickSepiaButton:", forControlEvents: .TouchUpInside)
         
@@ -63,22 +61,29 @@ class ViewController: UIViewController {
         mb_mosaicButton.backgroundColor = UIColor.hexStr("#1A763E", alpha: 1.0)
         mb_mosaicButton.setTitle("mosaic", forState: .Normal)
         mb_mosaicButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        mb_mosaicButton.layer.position = CGPoint(x: ss.width*2/5, y: ss.height-50)
+        mb_mosaicButton.layer.position = CGPoint(x: ss.width*2/6, y: ss.height-50)
         mb_mosaicButton.addTarget(self, action: "onClickMosaicButton:", forControlEvents: .TouchUpInside)
         
         mb_monochromeButton.frame = CGRectMake(0, 0, 60, 60)
         mb_monochromeButton.backgroundColor = UIColor.hexStr("#5j5j5j", alpha: 1.0)
         mb_monochromeButton.setTitle("monochrome", forState: .Normal)
         mb_monochromeButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        mb_monochromeButton.layer.position = CGPoint(x: ss.width*3/5, y: ss.height-50)
+        mb_monochromeButton.layer.position = CGPoint(x: ss.width*3/6, y: ss.height-50)
         mb_monochromeButton.addTarget(self, action: "onClickMonochromeButton:", forControlEvents: .TouchUpInside)
         
         rb_reversalButton.frame = CGRectMake(0, 0, 60, 60)
         rb_reversalButton.backgroundColor = UIColor.hexStr("#FCA311", alpha: 1.0)
         rb_reversalButton.setTitle("reversal", forState: .Normal)
         rb_reversalButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        rb_reversalButton.layer.position = CGPoint(x: ss.width*4/5, y: ss.height-50)
+        rb_reversalButton.layer.position = CGPoint(x: ss.width*4/6, y: ss.height-50)
         rb_reversalButton.addTarget(self, action: "onClickReversalButton:", forControlEvents: .TouchUpInside)
+        
+        ccb_colorConversionButton.frame = CGRectMake(0, 0, 60, 60)
+        ccb_colorConversionButton.backgroundColor = UIColor.hexStr("#3A6EA5", alpha: 1.0)
+        ccb_colorConversionButton.setTitle("conversion", forState: .Normal)
+        ccb_colorConversionButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        ccb_colorConversionButton.layer.position = CGPoint(x: ss.width*5/6, y: ss.height-50)
+        ccb_colorConversionButton.addTarget(self, action: "onClickColorConversionButton:", forControlEvents: .TouchUpInside)
         
         
         
@@ -86,7 +91,7 @@ class ViewController: UIViewController {
         self.view.addSubview(mb_mosaicButton)
         self.view.addSubview(mb_monochromeButton)
         self.view.addSubview(rb_reversalButton)
-        
+        self.view.addSubview(ccb_colorConversionButton)
         
         
     }
@@ -134,6 +139,25 @@ class ViewController: UIViewController {
         let if_invertFilter = CIFilter(name: "CIColorInvert")
         if_invertFilter?.setValue(ii_inputImage, forKey: kCIInputImageKey)
         oi_outputImage = if_invertFilter?.outputImage
+        iv_imageView.image = UIImage(CIImage: oi_outputImage)
+        iv_imageView.setNeedsDisplay()
+    }
+    
+    func onClickColorConversionButton(sender:UIButton) {
+        let cf_colorFilter = CIFilter(name: "CIColorCrossPolynomial")!
+        
+        cf_colorFilter.setValue(ii_inputImage, forKey: kCIInputImageKey)
+        
+        // RGBの変換値を作成.
+        let r: [CGFloat] = [0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        let g: [CGFloat] = [0.0, 0.0, 1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        let b: [CGFloat] = [1.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+        // モノクロ化するための値の調整.
+        cf_colorFilter.setValue(CIVector(values: r, count: 10), forKey: "inputRedCoefficients")
+        cf_colorFilter.setValue(CIVector(values: g, count: 10), forKey: "inputGreenCoefficients")
+        cf_colorFilter.setValue(CIVector(values: b, count: 10), forKey: "inputBlueCoefficients")
+        
+        oi_outputImage = cf_colorFilter.outputImage
         iv_imageView.image = UIImage(CIImage: oi_outputImage)
         iv_imageView.setNeedsDisplay()
     }
