@@ -15,6 +15,7 @@
 		3288A2021C37BE35006E9016 /* practiceCoreImageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3288A2011C37BE35006E9016 /* practiceCoreImageTests.swift */; };
 		3288A20D1C37BE35006E9016 /* practiceCoreImageUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3288A20C1C37BE35006E9016 /* practiceCoreImageUITests.swift */; };
 		3288A21F1C37D2F4006E9016 /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3288A21E1C37D2F4006E9016 /* 2.jpg */; };
+		3288A2211C37D8B6006E9016 /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 3288A2201C37D8B6006E9016 /* 3.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		3288A20C1C37BE35006E9016 /* practiceCoreImageUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = practiceCoreImageUITests.swift; sourceTree = "<group>"; };
 		3288A20E1C37BE35006E9016 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		3288A21E1C37D2F4006E9016 /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
+		3288A2201C37D8B6006E9016 /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 			isa = PBXGroup;
 			children = (
 				3288A21E1C37D2F4006E9016 /* 2.jpg */,
+				3288A2201C37D8B6006E9016 /* 3.jpg */,
 				3288A1EC1C37BE34006E9016 /* AppDelegate.swift */,
 				3288A1EE1C37BE34006E9016 /* ViewController.swift */,
 				3288A1F01C37BE34006E9016 /* Main.storyboard */,
@@ -232,6 +235,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3288A2211C37D8B6006E9016 /* 3.jpg in Resources */,
 				3288A1F71C37BE34006E9016 /* LaunchScreen.storyboard in Resources */,
 				3288A1F41C37BE34006E9016 /* Assets.xcassets in Resources */,
 				3288A21F1C37D2F4006E9016 /* 2.jpg in Resources */,
