@@ -37,6 +37,7 @@ class ViewController: UIViewController {
     let sb_sepiaButton: UIButton = UIButton() //セピアのボタン
     let mb_mosaicButton: UIButton = UIButton() // モザイクボタン
     let mb_monochromeButton: UIButton = UIButton() //モノクロ化のボタン
+    let rb_reversalButton: UIButton = UIButton() // 反転ボタン
     
     // 画面サイズ取得
 
@@ -45,7 +46,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         let ss = self.view.frame.size // 画面サイズ
-        iv_imageView = UIImageView(frame: CGRectMake(0, 0, ss.width, ss.height))
+        iv_imageView = UIImageView(frame: CGRectMake(0, 0, ss.width, ss.height*3/4))
         iv_imageView.image = UIImage(CIImage: ii_inputImage!)
         iv_imageView.contentMode = UIViewContentMode.ScaleAspectFit // ??????????
         self.view.addSubview(iv_imageView)
@@ -54,7 +55,7 @@ class ViewController: UIViewController {
         sb_sepiaButton.backgroundColor = UIColor.hexStr("#F52F57", alpha: 1)
         sb_sepiaButton.setTitle("sepia", forState: .Normal)
         sb_sepiaButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        sb_sepiaButton.layer.position = CGPoint(x: ss.width/2, y: ss.height-50)
+        sb_sepiaButton.layer.position = CGPoint(x: ss.width/5, y: ss.height-50)
         sb_sepiaButton.tag = 1
         sb_sepiaButton.addTarget(self, action: "onClickSepiaButton:", forControlEvents: .TouchUpInside)
         
@@ -62,25 +63,29 @@ class ViewController: UIViewController {
         mb_mosaicButton.backgroundColor = UIColor.hexStr("#1A763E", alpha: 1.0)
         mb_mosaicButton.setTitle("mosaic", forState: .Normal)
         mb_mosaicButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        mb_mosaicButton.layer.position = CGPoint(x: ss.width/4, y: ss.height-50)
+        mb_mosaicButton.layer.position = CGPoint(x: ss.width*2/5, y: ss.height-50)
         mb_mosaicButton.addTarget(self, action: "onClickMosaicButton:", forControlEvents: .TouchUpInside)
         
         mb_monochromeButton.frame = CGRectMake(0, 0, 60, 60)
         mb_monochromeButton.backgroundColor = UIColor.hexStr("#5j5j5j", alpha: 1.0)
         mb_monochromeButton.setTitle("monochrome", forState: .Normal)
         mb_monochromeButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        mb_monochromeButton.layer.position = CGPoint(x: ss.width*3/4, y: ss.height-50)
+        mb_monochromeButton.layer.position = CGPoint(x: ss.width*3/5, y: ss.height-50)
         mb_monochromeButton.addTarget(self, action: "onClickMonochromeButton:", forControlEvents: .TouchUpInside)
         
+        rb_reversalButton.frame = CGRectMake(0, 0, 60, 60)
+        rb_reversalButton.backgroundColor = UIColor.hexStr("#FCA311", alpha: 1.0)
+        rb_reversalButton.setTitle("reversal", forState: .Normal)
+        rb_reversalButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        rb_reversalButton.layer.position = CGPoint(x: ss.width*4/5, y: ss.height-50)
+        rb_reversalButton.addTarget(self, action: "onClickReversalButton:", forControlEvents: .TouchUpInside)
         
         
-        
-        self.view.backgroundColor = UIColor.blackColor()
         
         self.view.addSubview(sb_sepiaButton)
         self.view.addSubview(mb_mosaicButton)
         self.view.addSubview(mb_monochromeButton)
-        
+        self.view.addSubview(rb_reversalButton)
         
         
         
@@ -125,6 +130,13 @@ class ViewController: UIViewController {
         iv_imageView.setNeedsDisplay()
     }
     
+    func onClickReversalButton(sender: UIButton) {
+        let if_invertFilter = CIFilter(name: "CIColorInvert")
+        if_invertFilter?.setValue(ii_inputImage, forKey: kCIInputImageKey)
+        oi_outputImage = if_invertFilter?.outputImage
+        iv_imageView.image = UIImage(CIImage: oi_outputImage)
+        iv_imageView.setNeedsDisplay()
+    }
     
 
     override func didReceiveMemoryWarning() {
