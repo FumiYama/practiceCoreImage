@@ -36,6 +36,7 @@ class ViewController: UIViewController {
     
     let sb_sepiaButton: UIButton = UIButton() //セピアのボタン
     let mb_mosaicButton: UIButton = UIButton() // モザイクボタン
+    let mb_monochromeButton: UIButton = UIButton() //モノクロ化のボタン
     
     // 画面サイズ取得
 
@@ -64,11 +65,21 @@ class ViewController: UIViewController {
         mb_mosaicButton.layer.position = CGPoint(x: ss.width/4, y: ss.height-50)
         mb_mosaicButton.addTarget(self, action: "onClickMosaicButton:", forControlEvents: .TouchUpInside)
         
+        mb_monochromeButton.frame = CGRectMake(0, 0, 60, 60)
+        mb_monochromeButton.backgroundColor = UIColor.hexStr("#5j5j5j", alpha: 1.0)
+        mb_monochromeButton.setTitle("monochrome", forState: .Normal)
+        mb_monochromeButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+        mb_monochromeButton.layer.position = CGPoint(x: ss.width*3/4, y: ss.height-50)
+        mb_monochromeButton.addTarget(self, action: "onClickMonochromeButton:", forControlEvents: .TouchUpInside)
+        
+        
+        
+        
         self.view.backgroundColor = UIColor.blackColor()
         
         self.view.addSubview(sb_sepiaButton)
         self.view.addSubview(mb_mosaicButton)
-        
+        self.view.addSubview(mb_monochromeButton)
         
         
         
@@ -102,6 +113,17 @@ class ViewController: UIViewController {
         iv_imageView.setNeedsDisplay()
     }
     
+    func onClickMonochromeButton(sender: UIButton) {
+        let mf_monochromeFilter = CIFilter(name: "CIColorMonochrome")
+        mf_monochromeFilter?.setValue(ii_inputImage, forKey: kCIInputImageKey) //イメージのセット
+        //モノクロ化するための値の調整
+        mf_monochromeFilter?.setValue(CIColor(red: 0.5, green: 0.5, blue: 0.5), forKey: kCIInputColorKey)
+        mf_monochromeFilter?.setValue(1.0, forKey: kCIInputIntensityKey)
+        
+        oi_outputImage = mf_monochromeFilter?.outputImage
+        iv_imageView.image = UIImage(CIImage: oi_outputImage)
+        iv_imageView.setNeedsDisplay()
+    }
     
     
 
