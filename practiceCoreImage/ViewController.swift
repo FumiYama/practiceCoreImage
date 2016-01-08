@@ -40,15 +40,35 @@ class ViewController: UIViewController {
     let rb_reversalButton: UIButton = UIButton() // 反転ボタン
     let ccb_colorConversionButton: UIButton = UIButton() // 色変換ボタン
     let sb_sharpButton: UIButton = UIButton() // 画像の境界をシャープに
+    
+    let slider: UISlider = UISlider() // すらいだー
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
         let ss = self.view.frame.size // 画面サイズ
+        
+        let initRasterizeValue : CGFloat = 1.0         // ラスタライズ化の初期化値.
+        
+        slider.layer.position = CGPointMake(ss.width/2, ss.height - 100)
+        slider.layer.zPosition = 1
+        slider.minimumValue = 0.1
+        slider.maximumValue = 1.0
+        slider.value = Float(1.0 - initRasterizeValue)
+        slider.addTarget(self, action: "onValueChanged:", forControlEvents: UIControlEvents.ValueChanged)
+        self.view.addSubview(slider)
+        
         iv_imageView = UIImageView(frame: CGRectMake(0, 0, ss.width, ss.height*3/4))
         iv_imageView.image = UIImage(CIImage: ii_inputImage!)
         iv_imageView.contentMode = UIViewContentMode.ScaleAspectFit // ??????????
-        self.view.addSubview(iv_imageView)
+
+        if iv_imageView != nil {
+            iv_imageView.layer.shouldRasterize = true
+            
+            iv_imageView.layer.rasterizationScale = initRasterizeValue // 値の初期化
+            
+            self.view.addSubview(iv_imageView)
+        }
         
         sb_sepiaButton.frame = CGRectMake(0, 0, 60, 60)
         sb_sepiaButton.backgroundColor = UIColor.hexStr("#F52F57", alpha: 1)
@@ -102,6 +122,12 @@ class ViewController: UIViewController {
         self.view.addSubview(ccb_colorConversionButton)
         self.view.addSubview(sb_sharpButton)
         
+    }
+    
+    func onValueChanged(slider: UISlider) {
+        if iv_imageView != nil {
+            iv_imageView.layer.rasterizationScale = CGFloat(1.1 - slider.value)
+        }
     }
     
     func onClickSepiaButton(sender: UIButton) {
