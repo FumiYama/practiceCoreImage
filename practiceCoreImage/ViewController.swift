@@ -70,7 +70,7 @@ class ViewController: UIViewController {
             self.view.addSubview(iv_imageView)
         }
         
-        sb_sepiaButton.frame = CGRectMake(0, 0, 60, 60)
+        sb_sepiaButton.frame = CGRectMake(0, 0, 50, 50)
         sb_sepiaButton.backgroundColor = UIColor.hexStr("#F52F57", alpha: 1)
         sb_sepiaButton.setTitle("sepia", forState: .Normal)
         sb_sepiaButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
@@ -78,40 +78,40 @@ class ViewController: UIViewController {
         sb_sepiaButton.tag = 1
         sb_sepiaButton.addTarget(self, action: "onClickSepiaButton:", forControlEvents: .TouchUpInside)
         
-        mb_mosaicButton.frame = CGRectMake(0, 0, 60, 60)
+        mb_mosaicButton.frame = CGRectMake(0, 0, 50, 50)
         mb_mosaicButton.backgroundColor = UIColor.hexStr("#1A763E", alpha: 1.0)
         mb_mosaicButton.setTitle("mosaic", forState: .Normal)
         mb_mosaicButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         mb_mosaicButton.layer.position = CGPoint(x: ss.width*2/7, y: ss.height-50)
         mb_mosaicButton.addTarget(self, action: "onClickMosaicButton:", forControlEvents: .TouchUpInside)
         
-        mb_monochromeButton.frame = CGRectMake(0, 0, 60, 60)
+        mb_monochromeButton.frame = CGRectMake(0, 0, 50, 50)
         mb_monochromeButton.backgroundColor = UIColor.hexStr("#5j5j5j", alpha: 1.0)
         mb_monochromeButton.setTitle("monochrome", forState: .Normal)
         mb_monochromeButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         mb_monochromeButton.layer.position = CGPoint(x: ss.width*3/7, y: ss.height-50)
         mb_monochromeButton.addTarget(self, action: "onClickMonochromeButton:", forControlEvents: .TouchUpInside)
         
-        rb_reversalButton.frame = CGRectMake(0, 0, 60, 60)
+        rb_reversalButton.frame = CGRectMake(0, 0, 50, 50)
         rb_reversalButton.backgroundColor = UIColor.hexStr("#FCA311", alpha: 1.0)
         rb_reversalButton.setTitle("reversal", forState: .Normal)
         rb_reversalButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
         rb_reversalButton.layer.position = CGPoint(x: ss.width*4/7, y: ss.height-50)
         rb_reversalButton.addTarget(self, action: "onClickReversalButton:", forControlEvents: .TouchUpInside)
         
-        ccb_colorConversionButton.frame = CGRectMake(0, 0, 60, 60)
+        ccb_colorConversionButton.frame = CGRectMake(0, 0, 50, 50)
         ccb_colorConversionButton.backgroundColor = UIColor.hexStr("#3A6EA5", alpha: 1.0)
         ccb_colorConversionButton.setTitle("conversion", forState: .Normal)
         ccb_colorConversionButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        ccb_colorConversionButton.layer.position = CGPoint(x: ss.width*5/7, y: ss.height-50)
+        ccb_colorConversionButton.layer.position = CGPoint(x: ss.width*6/7, y: ss.height-50)
         ccb_colorConversionButton.addTarget(self, action: "onClickColorConversionButton:", forControlEvents: .TouchUpInside)
         
         
-        sb_sharpButton.frame = CGRectMake(0, 0, 60, 60)
+        sb_sharpButton.frame = CGRectMake(0, 0, 50, 50)
         ccb_colorConversionButton.backgroundColor = UIColor.hexStr("#16DB65", alpha: 1.0)
         ccb_colorConversionButton.setTitle("sharp", forState: .Normal)
         ccb_colorConversionButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
-        ccb_colorConversionButton.layer.position = CGPoint(x: ss.width*6/7, y: ss.height-50)
+        ccb_colorConversionButton.layer.position = CGPoint(x: ss.width*6/7, y: ss.height-100)
         ccb_colorConversionButton.addTarget(self, action: "onClickSharpButton:", forControlEvents: .TouchUpInside)
         
         
